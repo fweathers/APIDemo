@@ -13,13 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var locationTextField: UITextField!
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {
-    }
-    
-    @IBOutlet weak var descriptionLabel: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=481d88783d376954dbbebf3d1bedbe8a")!
+        if let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=" + locationTextField.text! + ",uk&appid=481d88783d376954dbbebf3d1bedbe8a") {
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
@@ -40,7 +35,7 @@ class ViewController: UIViewController {
                         
                         if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String { // gets info from weather -> is an array with one item -> a dictionary -> print description
                             
-//                            print(description)
+                            //                            print(description)
                             DispatchQueue.main.sync(execute: { // dispatch to avoid delay in displaying text
                                 
                                 self.descriptionLabel.text = description
@@ -58,7 +53,19 @@ class ViewController: UIViewController {
             }
         }
         task.resume()
+            
+        } else {
+            
+            descriptionLabel.text = "Couldn't find weather for that location. Please try another."
+            
+        }
     }
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+           }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
