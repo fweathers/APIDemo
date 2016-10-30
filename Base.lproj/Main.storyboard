@@ -35,10 +35,13 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmb-ss-Nfq">
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wr7-SZ-NxH"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sS-MB-feA">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="360" id="MXs-CI-CTu"/>
+                                    <constraint firstAttribute="height" constant="200" id="MXs-CI-CTu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -66,6 +69,10 @@
                             <constraint firstAttribute="trailing" secondItem="7sS-MB-feA" secondAttribute="trailing" constant="15" id="zuD-BT-RJ6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="7sS-MB-feA" id="Abl-0q-4u0"/>
+                        <outlet property="locationTextField" destination="8aN-pq-Mwo" id="YQd-eR-TN8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

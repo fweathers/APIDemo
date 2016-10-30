@@ -10,6 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var locationTextField: UITextField!
+    
+    @IBAction func submitButtonTapped(_ sender: UIButton) {
+    }
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +40,12 @@ class ViewController: UIViewController {
                         
                         if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String { // gets info from weather -> is an array with one item -> a dictionary -> print description
                             
-                            print(description)
+//                            print(description)
+                            DispatchQueue.main.sync(execute: { // dispatch to avoid delay in displaying text
+                                
+                                self.descriptionLabel.text = description
+                                
+                            })
                             
                         }
                         
