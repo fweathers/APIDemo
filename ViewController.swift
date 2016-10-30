@@ -30,6 +30,13 @@ class ViewController: UIViewController {
                         let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                         
                         print(jsonResult)
+                        print(jsonResult["name"])
+                        
+                        if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String { // gets info from weather -> is an array with one item -> a dictionary -> print description
+                            
+                            print(description)
+                            
+                        }
                         
                     } catch {
                         
