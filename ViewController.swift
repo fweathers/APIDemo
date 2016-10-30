@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     @IBAction func submitButtonTapped(_ sender: UIButton) {
         
-        if let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=" + locationTextField.text! + ",uk&appid=481d88783d376954dbbebf3d1bedbe8a") {
+        if let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=" + locationTextField.text!.replacingOccurrences(of: " ", with: "%20") + ",uk&appid=481d88783d376954dbbebf3d1bedbe8a") {
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
